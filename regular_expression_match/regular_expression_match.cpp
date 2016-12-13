@@ -15,6 +15,7 @@ void print_array(int *a, int s) {
 
 namespace CU = common_utils;
 
+// Recursive solution for simple regular expression matching issue
 bool reg_match(const char *s, const char *p) {
     if( *p == '\0' ) {
         return *s == '\0';
