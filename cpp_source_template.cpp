@@ -3,6 +3,11 @@
 #include<algorithm>
 #include<limits.h>
 #include<assert.h>
+#include<string>
+#include<vector>
+#include<sstream>
+
+#include "../common_utils.hpp"
 
 void print_array(int *a, int s) {
 	for(int i = 0; i < s; i++) {
