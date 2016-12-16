@@ -10,13 +10,6 @@
 
 #include "../common_utils.hpp"
 
-void print_array(int *a, int s) {
-	for(int i = 0; i < s; i++) {
-		std::cout << a[i] << " ";
-	}
-	std::cout << std::endl;
-}
-
 namespace CU = common_utils;
 
 int main()
