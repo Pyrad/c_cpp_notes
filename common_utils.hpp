@@ -23,6 +23,35 @@ public:
 
 typedef binary_tree_node node;
 
+void VISIT(node* h) {
+    if(h) {
+        printf("%d ", h->value);
+    } else {
+        printf("INVALID_NODE_NULL ");
+    }
+}
+
+node* construct_tree_from_array(const int* nds, int size) {
+    assert(size > 0);
+    node* *p = new node*[size];
+    node* head = new node(nds[0]);
+    p[0] = head;
+    for(int i = 1; i < size; i++) {
+        node *cur = new node(nds[i]);
+        p[i] = cur;
+        int parent = (i - 1) / 2;
+        if( i % 2 == 0) {
+            p[parent]->right = cur;
+        } else {
+            p[parent]->left = cur;
+        }
+    }
+
+    delete [] p;
+
+    return head;
+}
+
 // --------- Delete a tree ---------
 void DELETE_TREE_NODE(node* h) {
     if(h) {
