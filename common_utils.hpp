@@ -23,6 +23,17 @@ public:
 
 typedef binary_tree_node node;
 
+class binary_tree_node_with_sibling : public binary_tree_node {
+public:
+    binary_tree_node_with_sibling(int v): binary_tree_node(v), next(NULL) { }
+
+public:
+    binary_tree_node* next;
+};
+
+typedef binary_tree_node_with_sibling snode;
+
+
 void VISIT(node* h) {
     if(h) {
         printf("%d ", h->value);

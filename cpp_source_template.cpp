@@ -8,6 +8,7 @@
 #include<sstream>
 #include<stack>
 #include<stdio.h>
+#include<queue>
 
 #include "../common_utils.hpp"
 #include "../test_data.hpp"

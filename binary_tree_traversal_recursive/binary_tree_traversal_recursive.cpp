@@ -79,7 +79,7 @@ node* construct_tree_from_array(const int* nds, int size) {
 
 int main()
 {
-    node *head = construct_tree_from_array(TD::tnodes, TD::num);
+    node *head = CU::construct_tree_from_array(TD::tnodes, TD::num);
 
     printf("Pre order traversal of a tree\n");
     pre_order(head);
