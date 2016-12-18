@@ -69,6 +69,60 @@ void in_order(node* h) {
     return ;
 }
 
+// -------- The binary tree traversal in post order with Morris method -------- 
+// Reverse right edge of a sub-tree
+node* reverse(node* h) {
+    node* pre = NULL;
+    node* next = h;
+    node* cur = h;
+    while(next) {
+        next = cur->right;
+        cur->right = pre;
+        pre = cur;
+        cur = next;
+    }
+
+    return pre;
+}
+
+// Print a sub-tree's right edge in reverse order
+void print_edge(node* h) {
+    node* tail = reverse(h);
+    node* t = tail;
+    while(t) {
+        CU::VISIT(t);
+        t = t->right;
+    }
+    reverse(tail);
+}
+
+void post_order(node* h) {
+    node* p = h;
+    node* r = NULL;
+    while(p) {
+        r = p->left;
+        if(r) {
+            while(r->right && (r->right != p)) {
+                r = r->right;
+            }
+            if(!r->right) {
+                r->right = p;
+                p = p->left;
+                continue;
+            } else {
+                r->right = NULL;
+                print_edge(p->left);
+            }
+        }
+        p = p->right;
+    }
+
+    print_edge(h);
+
+    return ;
+}
+// -------- END of the binary tree traversal in post order with Morris method -------- 
+
 int main()
 {
     node *head = CU::construct_tree_from_array(TD::tnodes, TD::num);
@@ -85,13 +139,11 @@ int main()
     CU::print_array(TD::golden_in_order, TD::num);
     printf("\n");
 
-#if 0
     printf("Post order traversal of a tree\n");
     post_order(head);
     printf("\nGolden is(post-order):\n");
     CU::print_array(TD::golden_post_order, TD::num);
     printf("\n");
-#endif // 0
 
     CU::release_tree(head);
 
