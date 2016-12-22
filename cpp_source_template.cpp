@@ -18,7 +18,9 @@ namespace CU = common_utils;
 namespace TD = test_data;
 
 // type definitions
-typedef CU::node node;
+typedef CU::node node;   // Binary tree node
+typedef CU::snode snode; // Binary tree node with sibling
+typedef CU::lnode lnode; // Linked list node
 
 int main()
 {

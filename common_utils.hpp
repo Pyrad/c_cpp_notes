@@ -6,9 +6,12 @@
 #include<algorithm>
 #include<limits.h>
 #include<assert.h>
+#include<time.h>
+#include<stdlib.h>
 
 namespace common_utils {
 
+// Binary tree node definition
 class binary_tree_node {
 
 public:
@@ -23,6 +26,7 @@ public:
 
 typedef binary_tree_node node;
 
+// Binary tree node with sibling definition
 class binary_tree_node_with_sibling : public binary_tree_node {
 public:
     binary_tree_node_with_sibling(int v): binary_tree_node(v), next(NULL) { }
@@ -32,6 +36,41 @@ public:
 };
 
 typedef binary_tree_node_with_sibling snode;
+
+// Linked list node definition
+class linked_list_node {
+public:
+    linked_list_node(int v): next(NULL), value(v) { }
+
+public:
+    linked_list_node *next;
+    int value;
+};
+
+typedef linked_list_node lnode;
+
+
+// Random digits generator
+// [a, b]
+int gen_random_int_1(const int& a, const int& b) {
+    srand((unsigned)time(NULL));
+    return a + rand() % (b - a + 1);
+}
+// [a, b)
+int gen_random_int_2(const int& a, const int& b) {
+    srand((unsigned)time(NULL));
+    return a + rand() % (b - a);
+}
+// (a, b]
+int gen_random_int_3(const int& a, const int& b) {
+    srand((unsigned)time(NULL));
+    return a + rand() % (b - a) + 1;
+}
+// (a, b)
+int gen_random_int_4(const int& a, const int& b) {
+    srand((unsigned)time(NULL));
+    return a + rand() % (b - a + 1) - 1;
+}
 
 
 void VISIT(node* h) {
@@ -114,6 +153,34 @@ void release_tree(node* h, int which_method = 99) {
     std::cout << "(Tree is released)" << std::endl;
 }
 // --------- End of delete a tree ---------
+
+// Tree traversal in recursive method
+void pre_order(node* h) {
+    if(!h) {
+        return ;
+    }
+    VISIT(h);
+    pre_order(h->left);
+    pre_order(h->right);
+}
+
+void in_order(node* h) {
+    if(!h) {
+        return ;
+    }
+    in_order(h->left);
+    VISIT(h);
+    in_order(h->right);
+}
+
+void post_order(node* h) {
+    if(!h) {
+        return ;
+    }
+    post_order(h->left);
+    post_order(h->right);
+    VISIT(h);
+}
 
 
 void print_array(const int *a, int s) {
