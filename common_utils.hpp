@@ -8,6 +8,7 @@
 #include<assert.h>
 #include<time.h>
 #include<stdlib.h>
+#include<unistd.h>
 
 namespace common_utils {
 
@@ -195,6 +196,63 @@ void print_string_vector(const std::vector<std::string>& svec) {
         std::cout << *itr << " ";
     }
 	std::cout << std::endl;
+}
+
+
+
+// ------------------------------------------
+// Create a linked list of a given number
+lnode* gen_linked_list(int number) {
+    if(number <= 0) {
+        return NULL;
+    }
+
+    if(number > 1) {
+        printf("(%d seconds would cost to create a linked list of %d nodes)\n", number, number);
+    } else {
+        printf("(%d second would cost to create a linked list of %d node)\n", number, number);
+    }
+    lnode dummy(-1);
+    lnode *p(&dummy);
+
+    const int rand_lower = -20000;
+    const int rand_upper = 20000;
+
+    for(int i = 0; i < number; i++) {
+        sleep(1);
+        p->next = new lnode(gen_random_int_1(rand_lower, rand_upper));
+        p = p->next;
+    }
+
+    return dummy.next;
+}
+
+void delete_linked_list(lnode *p) {
+    if(!p) {
+        return ;
+    }
+
+    int cnt = 0;
+    while(p) {
+        lnode *n = p->next;
+        delete p;
+        cnt++;
+        p = n;
+    }
+
+    printf("(Linked list(%d in total) is released)\n", cnt);
+}
+
+void print_link(lnode* p) {
+    if(!p) {
+        printf("(linked list is empty)\n");
+        return ;
+    }
+    while(p) {
+        printf("%d ", p->value);
+        p = p->next;
+    }
+    printf("\n");
 }
 
 } // NAMESPACE common_utils
