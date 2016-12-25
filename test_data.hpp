@@ -44,6 +44,9 @@ namespace test_data {
     const int test_array_2_size = 10;
     const int test_array_2[test_array_2_size] = {-55, -51, 41, -98, 21, 36, 48, -37, -39, 47};
 
+    const int test_array_3_size = 10;
+    const int test_array_3[test_array_2_size] = {-55, 6, 41, -98, 21, 6, 6, -37, -39, 6};
+
 } // namespace test_data
 
 
