@@ -192,7 +192,14 @@ void print_array(const int *a, int s) {
 }
 
 void print_string_vector(const std::vector<std::string>& svec) {
-    for(std::vector<std::string>::const_iterator itr = svec.begin(); itr < svec.end(); itr++) {
+    for(std::vector<std::string>::const_iterator itr = svec.begin(); itr != svec.end(); itr++) {
+        std::cout << *itr << " ";
+    }
+	std::cout << std::endl;
+}
+
+void print_int_vector(const std::vector<int>& vec) {
+    for(std::vector<int>::const_iterator itr = vec.begin(); itr != vec.end(); itr++) {
         std::cout << *itr << " ";
     }
 	std::cout << std::endl;
