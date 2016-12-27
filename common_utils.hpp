@@ -205,6 +205,28 @@ void print_int_vector(const std::vector<int>& vec) {
 	std::cout << std::endl;
 }
 
+template<typename T>
+void print_vector(const std::vector<T>& vec) {
+    size_t vsize = vec.size();
+    for(size_t i = 0; i < vsize; i++) {
+        std::cout << vec[i] << " ";
+    }
+    std::cout << std::endl;
+}
+
+template<typename T>
+void print_vector_vector(const std::vector<std::vector<T> >& vecv) {
+    size_t vsize = vecv.size();
+    for(size_t i = 0; i < vsize; i++) {
+        std::cout << "vector " << i + 1 << ": ";
+        size_t size = vecv[i].size();
+        for(size_t j = 0; j < size; j++) {
+            std::cout << vecv[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+}
+
 
 
 // ------------------------------------------
