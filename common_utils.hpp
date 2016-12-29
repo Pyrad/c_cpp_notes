@@ -284,6 +284,17 @@ void print_link(lnode* p) {
     printf("\n");
 }
 
+
+template <typename T>
+void print_matrix(const int& r, const int& c, T** m) {
+    for(int i = 0; i < r; i++) {
+        for(int j = 0; j < c; j++) {
+            std::cout << m[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+}
+
 } // NAMESPACE common_utils
 
 #endif // _COMMON_UTILS_HPP
